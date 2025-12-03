@@ -1,0 +1,7 @@
+
+body { background:#000; color:#fff; font-family:Arial; padding:20px; }
+.screen { max-width:700px; margin:auto; }
+.setup-group { border:1px solid #444; padding:15px; margin-bottom:20px; border-radius:8px; }
+label { display:block; margin-top:10px; }
+input[type=range] { width:100%; }
+button { padding:10px 20px; font-size:18px; margin-top:20px; }

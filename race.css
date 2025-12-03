@@ -1,0 +1,154 @@
+/* Styles specific to the 2D race view and HUD */
+
+.overlay-corrida {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+}
+
+.track-container {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 500px;
+  border: 1px solid #444;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+#track-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cars-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.car-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.standings {
+  margin-top: 10px;
+  text-align: left;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+}
+.standings table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.standings th,
+.standings td {
+  padding: 4px;
+  border-bottom: 1px solid #444;
+}
+
+.race-hud {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #fff;
+}
+.race-hud div {
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.race-hud button {
+  padding: 6px 12px;
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pit-popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.pit-popup.hidden {
+  display: none;
+}
+.pit-options {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.pit-options button {
+  padding: 8px 12px;
+  background: #333;
+  color: #fff;
+  border: 1px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Indicador de voltas mostrado acima da pista */
+.lap-indicator {
+  margin: 8px auto;
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+/* Controles de velocidade para a corrida */
+.race-speed-controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+
+.race-speed-controls button {
+  padding: 6px 10px;
+  background: #222;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.race-speed-controls button.active,
+.race-speed-controls button:hover {
+  background: #c00;
+  border-color: #c00;
+}

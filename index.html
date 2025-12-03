@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>F1 Manager 2025 AAA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="race.css">
+</head>
+<body>
+
+<!-- CAPA -->
+<section id="tela-capa" class="tela tela-fundo-capa visible">
+  <div class="overlay">
+    <div class="capa-container">
+      <h1 class="titulo-capa">F1 MANAGER <span>2025</span></h1>
+      <p class="subtitulo-capa">Simulador de gerenciamento inspirado na Fórmula 1</p>
+      <button class="btn-principal" onclick="abrirMenuPrincipal()">Iniciar</button>
+    </div>
+  </div>
+</section>
+
+<!-- MENU PRINCIPAL -->
+<section id="menu-principal" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Menu Principal</h2>
+    <div class="menu-grid">
+      <button onclick="abrirCriarGerente()">Criar Novo Gerente</button>
+      <button onclick="abrirGerentesReais()">Usar Gerente Real 2025</button>
+      <button onclick="carregarJogo()">Carregar Carreira</button>
+      <button onclick="resetarCarreira()">Resetar Carreira</button>
+      <button onclick="abrirCreditos()">Créditos</button>
+    </div>
+    <button class="btn-voltar" onclick="voltarParaCapa()">Voltar</button>
+  </div>
+</section>
+
+<!-- CRIAR GERENTE -->
+<section id="criar-gerente" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Criar Novo Gerente</h2>
+
+    <label>Nome do Gerente:</label>
+    <input id="input-nome-gerente" placeholder="Digite seu nome">
+
+    <h3>Escolha um Avatar (depois você coloca as imagens)</h3>
+    <div id="lista-avatares" class="avatar-grid"></div>
+
+    <h3>Escolha a Bandeira do País</h3>
+    <div id="lista-bandeiras" class="bandeira-grid"></div>
+
+    <button class="btn-principal" onclick="confirmarGerenteCriado()">Confirmar</button>
+    <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar</button>
+  </div>
+</section>
+
+<!-- GERENTES REAIS -->
+<section id="gerentes-reais" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Gerentes Reais 2025</h2>
+    <div id="lista-gerentes-reais" class="lista-reais"></div>
+    <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar</button>
+  </div>
+</section>
+
+<!-- ESCOLHA DE ESCUDERIA -->
+<section id="escolher-escuderia" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Escolha sua Escuderia</h2>
+    <div id="lista-escuderias" class="escuderia-grid"></div>
+    <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar</button>
+  </div>
+</section>
+
+<!-- LOBBY PRINCIPAL -->
+<section id="lobby" class="tela tela-fundo-lobby">
+  <div class="overlay">
+      <div class="painel-superior">
+        <!-- Avatar do gerente com imagem real -->
+        <div class="gerente-info">
+          <img id="avatar-gerente-img" class="avatar-img" src="" alt="Avatar do Gerente">
+          <div>
+            <h3 id="nome-gerente"></h3>
+            <p id="pais-gerente"></p>
+          </div>
+        </div>
+        <!-- Logo da equipe selecionada juntamente com informações da equipe -->
+        <div class="equipe-info">
+          <img id="logo-equipe" class="logo-equipe-img" src="" alt="Logo da Equipe">
+          <div>
+            <h3 id="nome-equipe"></h3>
+            <p id="motor-equipe"></p>
+          </div>
+        </div>
+        <!-- Informações de finanças -->
+        <div class="financas-info">
+          <h3>Finanças</h3>
+          <p id="dinheiro-atual"></p>
+          <!-- Exibe a pontuação do gerente acumulada durante a temporada -->
+          <p id="pontuacao-gerente"></p>
+        </div>
+      </div>
+
+      <!-- Lista os pilotos atuais da equipe do jogador com seus avatares -->
+      <div id="pilotos-lobby" class="pilotos-lobby"></div>
+
+    <div class="lobby-botoes">
+      <button onclick="abrirCalendario()">Calendário</button>
+      <button onclick="abrirPatrocinio()">Patrocínio</button>
+      <button onclick="abrirFuncionarios()">Funcionários</button>
+      <button onclick="abrirMercadoPilotos()">Mercado de Pilotos</button>
+      <button onclick="abrirOficina()">Oficina / Carro</button>
+      <button onclick="abrirTabelaPilotos()">Classificação Pilotos</button>
+      <button onclick="abrirTabelaEquipes()">Classificação Equipes</button>
+      <button class="btn-principal" onclick="abrirProximaCorrida()">Próximo GP</button>
+    </div>
+
+    <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar ao Menu</button>
+  </div>
+</section>
+
+<!-- CALENDÁRIO -->
+<section id="calendario" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Calendário da Temporada 2025</h2>
+    <div id="lista-corridas" class="corrida-grid"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- PATROCINADORES -->
+<section id="patrocinadores" class="tela tela-fundo-patrocinio">
+  <div class="overlay">
+    <h2>Patrocínios</h2>
+    <div id="lista-patrocinios" class="patrocinio-grid"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- FUNCIONÁRIOS -->
+<section id="funcionarios" class="tela tela-fundo-funcionarios">
+  <div class="overlay">
+    <h2>Funcionários</h2>
+    <div id="lista-funcionarios" class="func-grid"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- MERCADO DE PILOTOS -->
+<section id="mercado-pilotos" class="tela tela-fundo-mercado">
+  <div class="overlay">
+    <h2>Mercado de Pilotos</h2>
+    <div id="lista-pilotos-mercado" class="mercado-grid"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- OFICINA / CARRO -->
+<section id="oficina" class="tela tela-fundo-oficina">
+  <div class="overlay">
+    <h2>Oficina - Melhorias do Carro</h2>
+    <p>As melhorias mexem diretamente no desempenho na classificação e na corrida.</p>
+    <div id="oficina-status" class="tabela"></div>
+    <div id="oficina-upgrades" class="oficina-grid"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- TELA DO GP (FUNDO DA PISTA) -->
+<section id="tela-gp" class="tela tela-fundo-pista">
+  <div class="overlay">
+    <h2 id="gp-nome"></h2>
+    <p id="gp-circuito"></p>
+    <p id="gp-voltas"></p>
+    <button onclick="abrirTreinoLivre()">Treino Livre</button>
+    <button onclick="abrirQualificacao()">Classificação</button>
+    <button class="btn-principal" onclick="abrirCorrida()">Ir para Corrida</button>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar ao Lobby</button>
+  </div>
+</section>
+
+<!-- TREINO LIVRE (FUNDO DA PISTA) -->
+<section id="treino-livre" class="tela tela-fundo-pista">
+  <div class="overlay">
+    <h2>Treino Livre</h2>
+    <div id="texto-treino" class="texto-maquina"></div>
+    <button class="btn-principal" onclick="finalizarTreino()">Ir para Classificação</button>
+    <button class="btn-voltar" onclick="voltarTelaGP()">Voltar ao GP</button>
+  </div>
+</section>
+
+<!-- CLASSIFICAÇÃO (FUNDO DA PISTA) -->
+<section id="classificacao" class="tela tela-fundo-pista">
+  <div class="overlay">
+    <h2>Classificação</h2>
+    <div id="resultado-classificacao" class="tabela"></div>
+    <button class="btn-principal" onclick="finalizarClassificacao()">Ir para Corrida</button>
+    <button class="btn-voltar" onclick="voltarTelaGP()">Voltar ao GP</button>
+  </div>
+</section>
+
+<!-- CORRIDA (FUNDO DA PISTA) -->
+<section id="corrida" class="tela tela-fundo-pista">
+  <div class="overlay-corrida">
+    <h2 id="corrida-gp-nome">Corrida</h2>
+    <!-- Indicador de voltas (é atualizado dinamicamente no JS) -->
+    <div id="lap-indicator" class="lap-indicator">Volta 1 / 10</div>
+    <!-- Controles de velocidade da corrida -->
+    <div id="race-speed-controls" class="race-speed-controls">
+      <button id="speed-1x" class="active" onclick="setRaceSpeed(1)">1x</button>
+      <button id="speed-2x" onclick="setRaceSpeed(2)">2x</button>
+      <button id="speed-4x" onclick="setRaceSpeed(4)">4x</button>
+    </div>
+    <div id="track-container" class="track-container">
+      <img id="track-image" src="" alt="Pista">
+      <div id="cars-layer" class="cars-layer"></div>
+    </div>
+    <div id="race-standings" class="standings"></div>
+    <div id="race-hud" class="race-hud">
+      <div>Pneus: <span id="hud-tyre">-</span></div>
+      <div>Desgaste: <span id="hud-wear">-</span>%</div>
+      <div>Temp: <span id="hud-temp">-</span>°C</div>
+      <div>Delta: <span id="hud-delta">-</span>s</div>
+      <button id="btn-box" onclick="comandarBox()">BOX THIS LAP</button>
+    </div>
+    <div id="pit-popup" class="pit-popup hidden">
+      <h3>Escolha o composto</h3>
+      <div id="pit-tyre-options" class="pit-options"></div>
+      <button onclick="cancelarBox()">Cancelar</button>
+    </div>
+    <button class="btn-voltar" onclick="cancelarCorridaEVolarGP()">Voltar ao GP</button>
+  </div>
+</section>
+
+<!-- CLASSIFICAÇÃO DE PILOTOS -->
+<section id="tabela-pilotos" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Classificação de Pilotos</h2>
+    <div id="tabela-pilotos-conteudo" class="tabela"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- CLASSIFICAÇÃO DE EQUIPES -->
+<section id="tabela-equipes" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Classificação de Construtores</h2>
+    <div id="tabela-equipes-conteudo" class="tabela"></div>
+    <button class="btn-voltar" onclick="voltarLobby()">Voltar</button>
+  </div>
+</section>
+
+<!-- PÓDIO -->
+<section id="podio" class="tela tela-fundo-podio">
+  <div class="overlay">
+    <h2>Pódio</h2>
+    <div id="podio-top3" class="podio-grid"></div>
+    <button class="btn-principal" onclick="finalizarCorrida()">Voltar ao Lobby</button>
+  </div>
+</section>
+
+  <!-- FIM DE TEMPORADA -->
+  <section id="fim-temporada" class="tela tela-fundo-lobby">
+    <div class="overlay">
+      <h2>Fim da Temporada</h2>
+      <div id="resumo-temporada" class="resumo-temporada"></div>
+      <div id="convites-equipes" class="convites-grid"></div>
+      <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar</button>
+    </div>
+  </section>
+
+<!-- CRÉDITOS -->
+<section id="creditos" class="tela tela-fundo-lobby">
+  <div class="overlay">
+    <h2>Créditos</h2>
+    <p>Desenvolvido por Jonatan Vale &amp; IA</p>
+    <button class="btn-voltar" onclick="voltarMenuPrincipal()">Voltar</button>
+  </div>
+</section>
+
+  <script src="data.js"></script>
+  <script src="tyreSystem.js"></script>
+  <script src="pitStopSystem.js"></script>
+  <script src="aiStrategy.js"></script>
+  <script src="weatherPrep.js"></script>
+  <script src="raceSystem.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

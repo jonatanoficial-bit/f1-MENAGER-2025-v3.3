@@ -1,0 +1,555 @@
+:root {
+  --f1-black: #000000;
+  --f1-dark: #111111;
+  --f1-gray: #1b1b1b;
+  --f1-light: #f5f5f5;
+  --f1-red: #e10600;
+  --f1-red-light: #ff3b30;
+  --border: rgba(255,255,255,0.12);
+  --shadow: rgba(0,0,0,0.6);
+  --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font);
+}
+
+body {
+  background: #000;
+  color: var(--f1-light);
+}
+
+/* ============================================================
+   TELAS E FUNDOS
+   ============================================================ */
+
+.tela {
+  display: none;
+  min-height: 100vh;
+  position: relative;
+}
+
+.tela.visible {
+  display: block;
+}
+
+.overlay {
+  background: radial-gradient(circle at top, rgba(0,0,0,0.85), rgba(0,0,0,0.95));
+  min-height: 100vh;
+  padding: 32px 20px 40px;
+}
+
+/* FUNDOS ESTÁTICOS */
+.tela-fundo-capa {
+  background: url('assets/ui/capa_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-lobby {
+  background: url('assets/ui/lobby_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-mercado {
+  background: url('assets/ui/mercado_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-oficina {
+  background: url('assets/ui/oficina_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-patrocinio {
+  background: url('assets/ui/patrocinio_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-funcionarios {
+  background: url('assets/ui/funcionarios_bg.png') center/cover no-repeat fixed;
+}
+
+.tela-fundo-podio {
+  background: url('assets/ui/podio_bg.png') center/cover no-repeat fixed;
+}
+
+/* FUNDO DINÂMICO DAS PISTAS (tela-gp, treino, quali, corrida) */
+.tela-fundo-pista {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* ============================================================
+   TÍTULOS E TEXTO
+   ============================================================ */
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.titulo-capa {
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--f1-light);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.titulo-capa span {
+  color: var(--f1-red);
+}
+
+.subtitulo-capa {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* ============================================================
+   CAPA
+   ============================================================ */
+
+.capa-container {
+  text-align: center;
+  margin-top: 120px;
+}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+
+button {
+  background: var(--f1-gray);
+  color: var(--f1-light);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
+}
+
+button:hover {
+  background: var(--f1-red);
+  border-color: var(--f1-red-light);
+}
+
+.btn-principal {
+  margin-top: 24px;
+  padding: 14px 30px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--f1-red), var(--f1-red-light));
+  border: none;
+  cursor: pointer;
+  color: var(--f1-light);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15px;
+  box-shadow: 0 0 16px rgba(225,6,0,0.7);
+  transition: 0.2s;
+}
+
+.btn-principal:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 24px rgba(225,6,0,1);
+}
+
+.btn-voltar {
+  margin-top: 18px;
+  background: transparent;
+  border-color: var(--f1-red);
+  color: var(--f1-red);
+}
+
+.btn-voltar:hover {
+  background: var(--f1-red);
+  color: var(--f1-light);
+}
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+input {
+  background: #101010;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  color: var(--f1-light);
+  width: 100%;
+  max-width: 320px;
+  margin: 6px 0 16px;
+}
+
+/* ============================================================
+   MENU PRINCIPAL
+   ============================================================ */
+
+.menu-grid {
+  max-width: 700px;
+  margin: 32px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ============================================================
+   AVATARES E BANDEIRAS
+   ============================================================ */
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.avatar-card {
+  width: 100%;
+  padding-top: 100%;
+  background: var(--f1-gray);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--shadow);
+}
+
+.avatar-card.selecionado {
+  border-color: var(--f1-red);
+}
+
+.bandeira-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.bandeira-card {
+  width: 100%;
+  padding-top: 65%;
+  background: var(--f1-gray);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.bandeira-card.selecionado {
+  border-color: var(--f1-red);
+}
+
+/* ============================================================
+   GERENTES REAIS / ESCUDERIAS
+   ============================================================ */
+
+.lista-reais {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.escuderia-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.escuderia-card {
+  background: var(--f1-dark);
+  border-radius: 12px;
+  padding: 14px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  box-shadow: 0 0 14px var(--shadow);
+  transition: 0.2s;
+  text-align: left;
+}
+
+.escuderia-card:hover {
+  border-color: var(--f1-red);
+  transform: translateY(-2px);
+}
+
+/* LOGO NAS ESCUDERIAS */
+.esc-logo {
+  margin-bottom: 6px;
+}
+.esc-logo img {
+  /* logos das escuderias maiores para maior destaque */
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+/* Avatar grande utilizado no lobby */
+.avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Logo da equipe exibida no lobby */
+.logo-equipe-img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+/* Avatar para os gerentes reais na listagem de escolha */
+.gerente-real-avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 6px;
+}
+
+/* mini círculos (pode continuar usando onde não tiver img) */
+.mini-logo,
+.mini-avatar {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background: #2a2a2a;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-size: 9px;
+  margin-right: 6px;
+  opacity: 0.9;
+}
+
+/* mini logo em img (tabela construtores / pódio) */
+.mini-logo-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #111;
+  object-fit: contain;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Imagem de avatar em miniatura para pilotos em tabelas e lobby */
+.mini-avatar-img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* Lista de pilotos no lobby */
+.pilotos-lobby {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.piloto-lobby-card {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+
+/* Tela de fim de temporada */
+.convites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.convite-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+
+.convite-card h4 {
+  margin: 8px 0 4px;
+}
+
+.convite-card button {
+  margin-top: 6px;
+}
+
+.campeao-section,
+.resumo-section,
+.resumo-pontuacao,
+.gameover-section {
+  margin-bottom: 16px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.campeao-section .campeao-avatar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   LOBBY
+   ============================================================ */
+
+.painel-superior {
+  background: rgba(0,0,0,0.7);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.gerente-info {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.equipe-info, .financas-info {
+  min-width: 140px;
+}
+
+#avatar-gerente .card {
+  background: var(--f1-gray);
+}
+
+.lobby-botoes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   GRIDS E CARDS GERAIS
+   ============================================================ */
+
+.card {
+  background: var(--f1-dark);
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 10px var(--shadow);
+}
+
+.corrida-grid,
+.func-grid,
+.patrocinio-grid,
+.mercado-grid,
+.oficina-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+/* ============================================================
+   TABELAS / PAINÉIS
+   ============================================================ */
+
+.tabela {
+  background: rgba(0,0,0,0.78);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  margin-top: 18px;
+}
+
+/* ============================================================
+   TEXTO MÁQUINA
+   ============================================================ */
+
+.texto-maquina {
+  white-space: pre-line;
+  margin-top: 14px;
+}
+
+/* ============================================================
+   PÓDIO
+   ============================================================ */
+
+.podio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.podio-card {
+  background: rgba(0,0,0,0.8);
+  border-radius: 12px;
+  border: 1px solid var(--f1-red);
+  text-align: center;
+  padding: 14px;
+  box-shadow: 0 0 18px rgba(225,6,0,0.6);
+}
+
+.podio-imagens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0;
+}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .avatar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bandeira-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .escuderia-grid,
+  .corrida-grid,
+  .func-grid,
+  .patrocinio-grid,
+  .mercado-grid,
+  .oficina-grid,
+  .lobby-botoes,
+  .lista-reais {
+    grid-template-columns: 1fr;
+  }
+
+  .painel-superior {
+    flex-direction: column;
+  }
+}
